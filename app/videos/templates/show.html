@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Videos</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title:</th>
+                <th>Created date:</th>
+                <th>Number of likes:</th>
+                <th>Number of dislikes:</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos %}
+            <tr>
+                <td>{{ video.title }}</td>
+                <td>{{ video.created_date }}</td>
+                <td>{{ video.num_likes }}</td>
+                <td>{{ video.num_dislikes }}</td>
+                <td>
+                    <a href="/delete/{{ video.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <center><a href="/vid" class="btn btn-primary">Add New Video</a></center>
+</body>
+
+</html>
